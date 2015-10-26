@@ -1,5 +1,5 @@
 1.1.2
-	Added tests to check that the extension is working and returns the parent mocked.
+	Added tests to check that the extension is working and returns the parent mocked .
 1.1.1
 	Fix bug when we receive mocked objects. Don't mock them again.
 1.1.0
