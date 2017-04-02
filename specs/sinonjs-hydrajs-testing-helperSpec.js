@@ -49,22 +49,17 @@
       window.alert.restore();
       Hydra.setTestFramework( null );
     } );
-    it('should check that we can access to the stubbed base module', function (){
-      waitsFor(function () {
-        Hydra.module.register( sModuleId, fpBaseModuleCreator );
-        var oPromise = Hydra.module.extend( sModuleId, sExtendedModuleId, fpExtendedModule );
-        oPromise.then(function () {
-          flag = true;
-        });
-        return flag;
-      }, "Module extension to be completed", 1000);
-      runs(function () {
+    it('should check that we can access to the stubbed base module', function (done){
+      Hydra.module.register( sModuleId, fpBaseModuleCreator );
+      var oPromise = Hydra.module.extend( sModuleId, sExtendedModuleId, fpExtendedModule );
+      oPromise.then(function () {
         Hydra.module.test(sExtendedModuleId, function ( oModule ) {
           oModuleInstance = oModule;
         });
         oModuleInstance.init();
         expect( oModuleInstance.mocks.parent.init.callCount ).toEqual( 1 );
         expect( oModuleInstance.mocks.parent.method1.callCount).toEqual( 0 );
+        done();
       });
     });
   });
