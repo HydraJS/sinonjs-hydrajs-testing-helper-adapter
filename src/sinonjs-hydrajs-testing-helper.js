@@ -1,50 +1,36 @@
 (function () {
   'use strict';
+  var mockObjectProperties = function(oObj) {
+    var mock = {},
+      oWhatever;
+    for(var sKey in oObj) {
+      oWhatever = oObj[sKey];
+      if (typeof oWhatever === 'function' && oWhatever.toString() !== 'stub') {
+        mock[sKey] = sinon.stub();
+      } else {
+        mock[sKey] = oWhatever;
+      }
+    }
+    return mock;
+  };
+
   function adapter(Hydra, sinon) {
     Hydra.testing.setMockLibrary(sinon, {
       getAllFunctionsStubbed: function (oObj) {
-        var sKey,
-        oMock = {},
-        oWhatever;
-        if(oObj.toString() === 'stub')
-        {
+        var oMock = {};
+        if(oObj.toString() === 'stub') {
           return oObj;
         }
         if (typeof oObj === 'function') {
           if (oObj.prototype) {
             oMock = sinon.stub();
-            oMock.prototype = {};
-            for(sKey in oObj.prototype){
-              oWhatever = oObj.prototype[sKey];
-              if (typeof oWhatever === 'function') {
-                if(oWhatever.toString() !== 'stub')
-                {
-                  oMock.prototype[sKey] = sinon.stub();
-                }else{
-                  oMock.prototype[sKey] = oWhatever;
-                }
-              } else {
-                oMock.prototype[sKey] = oWhatever;
-              }
-            }
-          }else{
+            oMock.prototype = mockObjectProperties(oObj.prototype);
+          } else {
             return sinon.stub();
           }
           return oMock;
         }
-        for (sKey in oObj) {
-          oWhatever = oObj[sKey];
-          if (typeof oWhatever === 'function') {
-            if(oWhatever.toString() !== 'stub')
-            {
-              oMock[sKey] = sinon.stub();
-            }else{
-              oMock[sKey] = oWhatever;
-            }
-          } else {
-            oMock[sKey] = oWhatever;
-          }
-        }
+        oMock = mockObjectProperties(oObj); 
         return oMock;
       }
     });
