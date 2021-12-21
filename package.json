@@ -56,7 +56,8 @@
     "sinon": "2.1.0",
     "swig": "1.4.2",
     "uglify-js": "2.8.20",
-    "tar": ">=4.4.18"
+    "tar": ">=4.4.18",
+    "socket.io-parser": ">=3.3.2"
   },
   "github": "https://github.com/HydraJS/sinonjs-hydrajs-testing-helper"
 }
