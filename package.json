@@ -62,7 +62,8 @@
     "glob-parent": ">=5.1.2",
     "xmlhttprequest-ssl": ">=1.6.2",
     "socket.io": ">=2.4.0",
-    "ws": ">=1.1.5"
+    "ws": ">=1.1.5",
+    "braces": ">=2.3.1"
   },
   "github": "https://github.com/HydraJS/sinonjs-hydrajs-testing-helper"
 }
