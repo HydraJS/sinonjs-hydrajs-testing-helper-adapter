@@ -60,7 +60,8 @@
     "socket.io-parser": ">=3.3.2",
     "trim-newlines": ">=3.0.1",
     "glob-parent": ">=5.1.2",
-    "xmlhttprequest-ssl": ">=1.6.2"
+    "xmlhttprequest-ssl": ">=1.6.2",
+    "socket.io": ">=2.4.0"
   },
   "github": "https://github.com/HydraJS/sinonjs-hydrajs-testing-helper"
 }
