@@ -42,7 +42,7 @@
     "hydra.js": "*",
     "hydrajs-testing-helper": "*",
     "jasmine-core": "^2.5.2",
-    "karma": "1.5.0",
+    "karma": "^1.7.1",
     "karma-chrome-launcher": "2.0.0",
     "karma-coffee-preprocessor": "1.0.1",
     "karma-coverage": "1.1.1",
